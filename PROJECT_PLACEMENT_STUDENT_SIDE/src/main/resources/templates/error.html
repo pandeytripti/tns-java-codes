@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h2>Something went wrong</h2>
+    <div class="message error"
+         th:text="${errorMessage != null ? errorMessage : (message != null ? message : (error != null ? error : 'Unknown error'))}">
+        Unknown error
+    </div>
+    <div class="nav">
+        <a th:href="@{/login}">Go to Login</a>
+        <a th:href="@{/dashboard}">Go to Dashboard</a>
+    </div>
+</div>
+</body>
+</html>

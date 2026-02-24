@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eligible Companies</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h2>Eligible Companies</h2>
+    <p>Your CGPA: <strong th:text="${studentCgpa}"></strong></p>
+
+    <div class="nav">
+        <a th:href="@{/dashboard}">Dashboard</a>
+        <a th:href="@{/applications}">My Applications</a>
+        <a th:href="@{/profile/update}">Update Profile</a>
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+
+    <div class="message success" th:if="${successMessage}" th:text="${successMessage}"></div>
+    <div class="message error" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Company</th>
+            <th>Role</th>
+            <th>Package</th>
+            <th>Eligibility CGPA</th>
+            <th>Last Date</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${#lists.isEmpty(companies)}">
+            <td colspan="6">No eligible companies found.</td>
+        </tr>
+        <tr th:each="company : ${companies}">
+            <td th:text="${company.companyName}"></td>
+            <td th:text="${company.role}"></td>
+            <td th:text="${company.packageAmount}"></td>
+            <td th:text="${company.eligibilityCgpa}"></td>
+            <td th:text="${company.lastDate}"></td>
+            <td>
+                <form th:action="@{/apply/{companyId}(companyId=${company.id})}" method="post">
+                    <button type="submit">Apply</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Register</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h2>Student Registration</h2>
+    <form th:action="@{/register}" th:object="${student}" method="post" enctype="multipart/form-data">
+        <div class="message error" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+        <div class="message error" th:if="${#fields.hasAnyErrors()}">
+            Please fix the highlighted fields.
+        </div>
+        <div>
+            <label>Name</label>
+            <input type="text" th:field="*{name}" required>
+            <small th:errors="*{name}" class="error"></small>
+        </div>
+        <div>
+            <label>USN</label>
+            <input type="text" th:field="*{usn}" required>
+            <small th:errors="*{usn}" class="error"></small>
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="email" th:field="*{email}" required>
+            <small th:errors="*{email}" class="error"></small>
+        </div>
+        <div>
+            <label>Phone</label>
+            <input type="text" th:field="*{phone}" required>
+            <small th:errors="*{phone}" class="error"></small>
+        </div>
+        <div>
+            <label>Department</label>
+            <input type="text" th:field="*{department}" required>
+            <small th:errors="*{department}" class="error"></small>
+        </div>
+        <div>
+            <label>Qualification</label>
+            <input type="text" th:field="*{qualification}" required>
+            <small th:errors="*{qualification}" class="error"></small>
+        </div>
+        <div>
+            <label>Course</label>
+            <input type="text" th:field="*{course}" required>
+            <small th:errors="*{course}" class="error"></small>
+        </div>
+        <div>
+            <label>Year of Passing</label>
+            <input type="number" min="1990" max="2100" th:field="*{yearOfPassing}" required>
+            <small th:errors="*{yearOfPassing}" class="error"></small>
+        </div>
+        <div>
+            <label>Hall Ticket Number</label>
+            <input type="text" th:field="*{hallTicketNumber}" required>
+            <small th:errors="*{hallTicketNumber}" class="error"></small>
+        </div>
+        <div>
+            <label>CGPA</label>
+            <input type="number" step="0.01" min="0" max="10" th:field="*{cgpa}" required>
+            <small th:errors="*{cgpa}" class="error"></small>
+        </div>
+        <div>
+            <label>Certificate</label>
+            <input type="file" name="certificateFile" required>
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" th:field="*{password}" required>
+            <small th:errors="*{password}" class="error"></small>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+
+    <p>Already registered? <a th:href="@{/login}">Login here</a></p>
+</div>
+</body>
+</html>

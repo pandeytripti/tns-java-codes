@@ -1,0 +1,16 @@
+org\tnsif\accenture\c2tc\student\repository\CompanyRepository.class
+org\tnsif\accenture\c2tc\student\PlacementStudentModuleApplication.class
+org\tnsif\accenture\c2tc\student\repository\StudentRepository.class
+org\tnsif\accenture\c2tc\student\entity\Company.class
+org\tnsif\accenture\c2tc\student\config\DataSeeder.class
+org\tnsif\accenture\c2tc\student\entity\Application.class
+org\tnsif\accenture\c2tc\student\entity\Student.class
+org\tnsif\accenture\c2tc\student\controller\GlobalExceptionHandler.class
+org\tnsif\accenture\c2tc\student\controller\StudentController$ApplicationRow.class
+org\tnsif\accenture\c2tc\student\service\StudentService.class
+org\tnsif\accenture\c2tc\student\repository\ApplicationRepository.class
+org\tnsif\accenture\c2tc\student\controller\StudentController.class
+org\tnsif\accenture\c2tc\student\entity\Certificate.class
+org\tnsif\accenture\c2tc\student\repository\CertificateRepository.class
+org\tnsif\accenture\c2tc\student\service\StudentServiceImpl.class
+org\tnsif\accenture\c2tc\student\dto\LoginRequest.class

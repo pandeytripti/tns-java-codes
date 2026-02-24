@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Applications</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h2>My Applications</h2>
+
+    <div class="nav">
+        <a th:href="@{/dashboard}">Dashboard</a>
+        <a th:href="@{/companies}">Eligible Companies</a>
+        <a th:href="@{/profile/update}">Update Profile</a>
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+    <div class="message error" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Company</th>
+            <th>Role</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${#lists.isEmpty(applications)}">
+            <td colspan="3">No applications submitted yet.</td>
+        </tr>
+        <tr th:each="appRow : ${applications}">
+            <td th:text="${appRow.companyName}"></td>
+            <td th:text="${appRow.role}"></td>
+            <td th:text="${appRow.status}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
