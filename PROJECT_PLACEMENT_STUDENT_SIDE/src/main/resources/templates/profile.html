@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h2>Update Profile</h2>
+
+    <div class="nav">
+        <a th:href="@{/dashboard}">Dashboard</a>
+        <a th:href="@{/companies}">Eligible Companies</a>
+        <a th:href="@{/applications}">My Applications</a>
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+    <div class="message error" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+    <div class="message success" th:if="${successMessage}" th:text="${successMessage}"></div>
+
+    <form th:action="@{/profile/update}" th:object="${student}" method="post" enctype="multipart/form-data">
+        <div class="message error" th:if="${#fields.hasAnyErrors()}">
+            Please fix the highlighted fields.
+        </div>
+        <div>
+            <label>Name</label>
+            <input type="text" th:field="*{name}" required>
+            <small th:errors="*{name}" class="error"></small>
+        </div>
+        <div>
+            <label>USN (Read Only)</label>
+            <input type="text" th:value="${student.usn}" readonly>
+        </div>
+        <div>
+            <label>Email (Read Only)</label>
+            <input type="email" th:value="${student.email}" readonly>
+        </div>
+        <div>
+            <label>Phone</label>
+            <input type="text" th:field="*{phone}" required>
+            <small th:errors="*{phone}" class="error"></small>
+        </div>
+        <div>
+            <label>Department</label>
+            <input type="text" th:field="*{department}" required>
+            <small th:errors="*{department}" class="error"></small>
+        </div>
+        <div>
+            <label>Qualification</label>
+            <input type="text" th:field="*{qualification}" required>
+            <small th:errors="*{qualification}" class="error"></small>
+        </div>
+        <div>
+            <label>Course</label>
+            <input type="text" th:field="*{course}" required>
+            <small th:errors="*{course}" class="error"></small>
+        </div>
+        <div>
+            <label>Year of Passing</label>
+            <input type="number" min="1990" max="2100" th:field="*{yearOfPassing}" required>
+            <small th:errors="*{yearOfPassing}" class="error"></small>
+        </div>
+        <div>
+            <label>Hall Ticket Number (Read Only)</label>
+            <input type="text" th:value="${student.hallTicketNumber}" readonly>
+        </div>
+        <div>
+            <label>CGPA</label>
+            <input type="number" step="0.01" min="0" max="10" th:field="*{cgpa}" required>
+            <small th:errors="*{cgpa}" class="error"></small>
+        </div>
+        <div>
+            <label>Certificate</label>
+            <input type="file" name="certificateFile">
+            <small>Leave empty to keep existing certificate.</small>
+            <div th:if="${student.certificateData != null}">
+                <a th:href="@{/profile/certificate}">Download current certificate</a>
+            </div>
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" th:field="*{password}" required>
+            <small th:errors="*{password}" class="error"></small>
+        </div>
+        <button type="submit">Update Profile</button>
+    </form>
+</div>
+</body>
+</html>

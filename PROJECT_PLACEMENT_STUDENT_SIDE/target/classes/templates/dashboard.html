@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h2>Welcome, <span th:text="${student.name}">Student</span></h2>
+    <div class="message success" th:if="${successMessage}" th:text="${successMessage}"></div>
+    <div class="message error" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+
+    <div class="nav">
+        <a th:href="@{/dashboard}">Dashboard</a>
+        <a th:href="@{/companies}">Eligible Companies</a>
+        <a th:href="@{/applications}">My Applications</a>
+        <a th:href="@{/profile/update}">Update Profile</a>
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+
+    <p><strong>USN:</strong> <span th:text="${student.usn}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${student.email}"></span></p>
+    <p><strong>Department:</strong> <span th:text="${student.department}"></span></p>
+    <p><strong>CGPA:</strong> <span th:text="${student.cgpa}"></span></p>
+
+    <h3>Summary</h3>
+    <p>Eligible companies: <strong th:text="${eligibleCount}"></strong></p>
+    <p>Applications submitted: <strong th:text="${appliedCount}"></strong></p>
+</div>
+</body>
+</html>
